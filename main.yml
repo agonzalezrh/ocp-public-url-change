@@ -457,5 +457,8 @@
     - "oc delete secret --field-selector type=kubernetes.io/tls -n openshift-monitoring"
     - "oc delete pod --all -n openshift-monitoring"
 
+  
 # Replace the router certificates and use the new openshift_master_default_subdomain
 - import_playbook: /usr/share/ansible/openshift-ansible/playbooks/openshift-hosted/redeploy-router-certificates.yml
+- name: Restart NetworkManager
+  command: systemctl restart NetworkManager
