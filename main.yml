@@ -141,7 +141,7 @@
     register: get_master_ip
 
   - set_fact:
-      guid: "{{ hostvars['localhost'].ansible_hostname.split('-')[1] }}"
+      guid: "{{ hostvars['localhost'].ansible_hostname.split('-')[1:] | join('-') }}"
 
   - name: Get domain of the server
     command: dnsdomainname
